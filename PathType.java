@@ -6,3 +6,4 @@
  */
 import java.util.*;
 //Complete the PathType enum
+enum PathType{BOUNCING, FLOATING;}

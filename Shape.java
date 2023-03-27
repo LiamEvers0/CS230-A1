@@ -7,26 +7,56 @@
  */
 import java.awt.*;
 abstract class Shape {
-    public static final int DEFAULT_PATHTYPE = 0;
-    public static final int DEFAULT_SHAPETYPE = 0;
+    public static final PathType DEFAULT_PATHTYPE = PathType.BOUNCING;
+    public static final ShapeType DEFAULT_SHAPETYPE = ShapeType.RECTANGLE;
     public static final int DEFAULT_X = 0, DEFAULT_Y = 0, DEFAULT_WIDTH=100, DEFAULT_HEIGHT=100, DEFAULT_PANEL_WIDTH=600, DEFAULT_PANEL_HEIGHT=800;
     public static final Color DEFAULT_COLOR=Color.blue, DEFAULT_BORDER_COLOR=Color.orange;
-
     public int x, y, width=DEFAULT_WIDTH, height=DEFAULT_HEIGHT, panelWidth=DEFAULT_PANEL_WIDTH, panelHeight=DEFAULT_PANEL_HEIGHT; // the bouncing area
     protected Color color = DEFAULT_COLOR;
     protected boolean selected = false;    // draw handles if selected
     protected MovingPath path = new BouncingPath(1, 2);
+    protected Color borderColor = DEFAULT_BORDER_COLOR;
 
 	// data field
 	// Complete the getBorderColor()
 	// Complete the setBorderColor()
 
 	//Complete the default constructor
+    public Shape(){}
+    
 	//Complete 2 abstract methods
-
+    public abstract void draw(Graphics g);
+    public abstract boolean contains(Point mousePt);
 	//Complete the two overloaded constructors
+    public Shape(Color c, Color bc, PathType pt){
+        this.color = c;
+        this.borderColor = bc;
+        if (pt == PathType.BOUNCING){
+            path = new BouncingPath(1, 2);
+        }
+    }
+
+    public Shape(int x, int y, int width, int height, int panelWidth, int panelHeight, Color c, Color bc, PathType pt){
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.panelWidth = panelWidth;
+        this.panelHeight = panelHeight;
+        this.borderColor = bc;
+        this.color = c;
+        if (pt == PathType.BOUNCING){
+            path = new BouncingPath(1, 2);
+        }
+    }
 	//Complete the tostring() method
 
+    public String toString(){
+        String message = String.format("%s:(%d,%d),%dx%d(%s)]", getClass().getName(), this.x, this.y, this.width, this.height, path.getClass().getName());
+        return message;
+    }
+    public Color getBorderColor() { return this.borderColor; }
+    public void setBorderColor(Color bc) { this.borderColor = bc; }
  	public int getX() { return this.x; }
     public int getY() { return this.y;}
     public int getWidth() { return width; }

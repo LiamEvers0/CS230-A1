@@ -6,3 +6,4 @@
  */
 import java.util.*;
 //Complete the ShapeType enum
+enum ShapeType{RECTANGLE, OVAL, STAR, OCTAGON;}

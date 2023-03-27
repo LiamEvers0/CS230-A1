@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 class AnimationViewer  {
     private ArrayList<Shape> shapes = new ArrayList<Shape>(); //create the ArrayList to store shapes
-    private int currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
-    private int currentPathType=Shape.DEFAULT_PATHTYPE;  // the current path type
+    private ShapeType currentShapeType=Shape.DEFAULT_SHAPETYPE; // the current shape type,
+    private PathType currentPathType=Shape.DEFAULT_PATHTYPE;  // the current path type
     private Color currentColor=Shape.DEFAULT_COLOR;  // the current fill colour of a shape
     private int currentPanelWidth=Shape.DEFAULT_PANEL_WIDTH, currentPanelHeight = Shape.DEFAULT_PANEL_HEIGHT, currentWidth=Shape.DEFAULT_WIDTH, currentHeight=Shape.DEFAULT_HEIGHT;
 
@@ -25,8 +25,12 @@ class AnimationViewer  {
 	public AnimationViewer() {}
 
 	//Complete the get/set currentShapeType methods
-	//Complete the get/set currentPathType methods
 
+	//Complete the get/set currentPathType methods
+    public ShapeType getCurrentShapeType(){ return this.currentShapeType; }
+    public PathType getCurrentPathType(){ return this.currentPathType; }
+    public void setCurrentShapeType(ShapeType s){ this.currentShapeType = s;}
+    public void setCurrentPathType(PathType p){ this.currentPathType = p; }
 	public int getCurrentWidth() { return  currentWidth; }
 	public int getCurrentHeight() { return currentHeight; }
     public void setCurrentWidth(int w) {currentWidth=w;}
